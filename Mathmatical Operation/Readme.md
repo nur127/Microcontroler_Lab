@@ -41,48 +41,59 @@ It stores flags that describe the result of operations.
 
 ---
 
-## 🔵 2. Arithmetic Operations
+┌──────────────────────────────────────────────────────────────┐
+│ 🔵 2. Arithmetic & Logical Operations                        │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│ 🔴 Arithmetic Operation                                      │
+│   Instruction: ADDS                                          │
+│   ✔ Performs addition                                        │
+│   ✔ Updates CPU flags (N, Z, C, V)                          │
+│   Example: 5 + (-6) = -1                                     │
+│                                                              │
+│ 🔵 Logical Operations                                        │
+│   Instructions:                                              │
+│     • ANDS → Bitwise AND                                    │
+│     • ORRS → Bitwise OR                                     │
+│     • EORS → Bitwise XOR                                    │
+│   ✔ Affects only N and Z flags                              │
+│   ✔ Does NOT affect C or V                                  │
+│                                                              │
+│ 🟡 Saturation Operation                                     │
+│   Instruction: SSAT                                         │
+│   ✔ Limits value within range                               │
+│   ✔ Used in DSP applications                                │
+│   ✔ Sets Q flag on overflow                                 │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
 
-We use:
 
-```assembly
-ADDS
+┌──────────────────────────────────────────────────────────────┐
+│ 🔌 Hardware Used                                             │
+├──────────────────────────────────────────────────────────────┤
+│ • STM32F103C8T6 (Blue Pill)                                 │
+│ • Onboard LED (PC13)                                        │
+│ • ST-Link Programmer                                        │
+└──────────────────────────────────────────────────────────────┘
 
-### 🔵 Operations Used
-- Arithmetic:
-  - `ADDS` → Add and update flags
-- Logical:
-  - `ANDS` → Bitwise AND
-  - `ORRS` → Bitwise OR
-  - `EORS` → Bitwise XOR
-- Saturation:
-  - `SSAT` → Signed saturation
 
----
+┌──────────────────────────────────────────────────────────────┐
+│ ⚙️ Development Tools                                         │
+├──────────────────────────────────────────────────────────────┤
+│ • STM32CubeIDE                                              │
+│ • ST-Link Driver                                            │
+│ • ARM GCC Toolchain                                         │
+└──────────────────────────────────────────────────────────────┘
 
-## 🔌 Hardware Used
 
-- STM32F103C8 (Blue Pill)
-- Onboard LED (PC13)
-- ST-Link Programmer
-
----
-
-## ⚙️ Development Tools
-
-- STM32CubeIDE
-- ST-Link Driver
-- ARM GCC Toolchain
-
----
-
-## 🚀 How It Works
-
-1. GPIOC clock is enabled using RCC register
-2. PC13 is configured as output pin
-3. Inline assembly instructions execute:
-   - Arithmetic operations
-   - Logical operations
-4. APSR register is read using:
-   ```c
-   MRS apsr, APSR
+┌──────────────────────────────────────────────────────────────┐
+│ 🚀 How It Works                                             │
+├──────────────────────────────────────────────────────────────┤
+│ 1. Enable GPIOC clock (RCC register)                        │
+│ 2. Configure PC13 as output (GPIOC_CRH)                     │
+│ 3. Execute assembly instructions (ADDS, ANDS, etc.)         │
+│ 4. Read APSR register:                                      │
+│      MRS apsr, APSR                                         │
+│ 5. Check CPU flags in C using bitwise operations            │
+│ 6. Control LED based on flag result                         │
+└──────────────────────────────────────────────────────────────┘
