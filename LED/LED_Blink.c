@@ -21,7 +21,7 @@ int main(void)
     RCC_APB2ENR |= (1 << 4);
 
     /* 2. Configure PC13 as output push-pull */
-    GPIOC_CRH &= ~(0xF << 20);   // clear PC13 bits
+    GPIOC_CRH &= ~(0xF << 20);   // clear PC13 bits(00F00000)
     GPIOC_CRH |=  (0x2 << 20);   // output mode (2 MHz)
 
     while(1)

@@ -22,7 +22,7 @@ int main(void)
 
     /* Configure PC13 as output */
     GPIOC_CRH &= ~(0x00F00000);
-    GPIOC_CRH |=  (1 << 21);
+    GPIOC_CRH |=  (1 << 21);//(2<<20)
 
     uint32_t apsr;
 
@@ -35,7 +35,7 @@ int main(void)
             "MOV R0, #5      \n"
             "MOV R1, #-6     \n"
             "ADDS R2, R0, R1 \n"   // -1 → N = 1
-            "MRS %0, APSR    \n"
+            "MRS %0, APSR    \n" //MRS aspr ,APSR
             : "=r"(apsr)
             :
             : "cc"
