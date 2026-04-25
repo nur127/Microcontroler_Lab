@@ -201,7 +201,7 @@ int main(){
         __asm volatile(
             "MOV R0, %1     \n"
             "MOV R1 , %2    \n"
-            "SUBS R2,R0,R1  \n"
+            "ADDS R2,R0,R1  \n"
             "MRS %0 , APSR    \n"
             :"=r"(apsr)
             :"r"(a),"r"(b)
