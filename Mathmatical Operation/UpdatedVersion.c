@@ -59,6 +59,17 @@ int main(void)
 
         delay();
 
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
+
 
         /* =========================
            3. SUBTRACTION (SUBS)
@@ -81,6 +92,17 @@ int main(void)
             GPIOC_BSRR = (1 << 13);
 
         delay();
+
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
 
 
         /* =========================
@@ -105,6 +127,17 @@ int main(void)
 
         delay();
 
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
+
 
         /* =========================
            5. OVERFLOW FLAG (V)
@@ -125,6 +158,17 @@ int main(void)
             GPIOC_BSRR = (1 << 13);
 
         delay();
+
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
 
 
         /* =========================
@@ -164,6 +208,17 @@ int main(void)
 
         delay();
 
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
+
 
         /* =========================
            8. ANDS (Z = 1)
@@ -186,6 +241,16 @@ int main(void)
             GPIOC_BSRR = (1 << 13);
 
         delay();
+                /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
 
 
         /* =========================
@@ -207,6 +272,17 @@ int main(void)
             GPIOC_BSRR = (1 << 13);
 
         delay();
+
+        /* =========================
+           1. CLEAR FLAGS
+        ========================= */
+        __asm volatile(
+            "MOV R0, #0            \n"
+            "MSR APSR_nzcvq, R0    \n"
+            :
+            :
+            : "cc"
+        );
 
 
         /* =========================
