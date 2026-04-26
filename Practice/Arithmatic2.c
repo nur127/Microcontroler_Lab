@@ -18,6 +18,17 @@ void LED_OFF(){
      GPIOC_BSRR = (1<<13);
 }
 
+void blink(int times)
+{
+    for(int i = 0; i < times; i++)
+    {
+        LED_ON();
+        delay();
+        LED_OFF();
+        delay();
+    }
+}
+
 
 
 int main(){

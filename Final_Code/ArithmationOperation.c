@@ -324,7 +324,7 @@ else
     __asm volatile(
     "MOV R0, %1     \n"
     "MOV R1, %2     \n"
-    "MUL R2, R0, R1 \n"
+    "SDIV R2, R0, R1 \n"
     "CMP R2, #0     \n"   // force flag update
     "MRS %0, APSR   \n"
     : "=r"(apsr)
@@ -336,6 +336,4 @@ if (apsr & (1<<30))   // Z flag
     LED_ON();
 else
     LED_OFF();
-
-
 }
